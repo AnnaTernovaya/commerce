@@ -9,11 +9,12 @@ models:
         tests:
           - not_null
           - unique
-       - name: customer_id
-         description:   
-           - relationships:
-               to: ref('stg_customers')
-               field: customer_id
+      - name: customer_id
+        description:  
+        tests:
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
 
 
   - name: stg_order_items
@@ -26,12 +27,14 @@ models:
           - unique
       - name: order_id
         description: Foreign key for orders table
+        tests:
            - not_null
            - relationships:
                to: ref('stg_orders')
                field: order_id
       - name: product_id
         description: Foreign key for products table
+        tests:
            - not_null              
            - relationships:
                to: ref('stg_products')
