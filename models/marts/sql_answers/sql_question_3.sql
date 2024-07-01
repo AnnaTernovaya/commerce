@@ -53,8 +53,8 @@ SELECT
   product_category_name,
   year,
   week,
-  round(weekly_gmv,2) AS weekly_gmv,
-  round(running_sum_gmv,2) AS running_sum_gmv,
-  round(gmv_growth_rate,4) AS gmv_growth_rate
+  cast(weekly_gmv AS Decimal) AS weekly_gmv,
+  cast(running_sum_gmv AS Decimal) AS running_sum_gmv,
+  cast(gmv_growth_rate AS Decimal) AS gmv_growth_rate
 FROM running_sum_growth_rate
 ORDER BY product_category_name, year, week
