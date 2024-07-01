@@ -1,0 +1,109 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description:
+    columns:
+      - name: order_id
+        description: Unique identifier for order
+        tests:
+          - not_null
+          - unique
+       - name: customer_id
+         description:   
+           - relationships:
+               to: ref('stg_customers')
+               field: customer_id
+
+
+  - name: stg_order_items
+    description:
+    columns:
+      - name: primary_key
+        description: Unique identifier for order item
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        description: Foreign key for orders table
+           - not_null
+           - relationships:
+               to: ref('stg_orders')
+               field: order_id
+      - name: product_id
+        description: Foreign key for products table
+           - not_null              
+           - relationships:
+               to: ref('stg_products')
+               field: product_id
+      - name: price
+        tests:
+          - is_not_negative_value
+      - name: freight_value
+        tests:
+          - is_not_negative_value
+
+
+  - name: stg_order_payments
+    description:
+    columns:
+      - name: order_id
+        description: Unique identifier for order payment
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
+        - name: payment_installments
+          tests:
+            - is_not_negative_value
+        - name: payment_value
+          tests:
+            - is_not_negative_value
+
+
+  - name: stg_customers
+    description:
+    columns:
+      - name: customer_id
+        description: Unique identifier for customer
+        tests:
+          - not_null
+          - unique
+   
+
+  - name: stg_products
+    description:
+    columns:
+      - name: product_id
+        description: Unique identifier for product
+        tests:
+          - not_null
+          - unique
+
+      - name: product_name_length
+        tests:
+          - is_not_negative_value
+      - name: product_description_length
+        tests:
+          - is_not_negative_value      
+      - name: product_photos_qty
+        tests:
+          - is_not_negative_value
+      - name: product_weight_g
+        tests:
+          - is_not_negative_value     
+      - name: product_length_cm
+        tests:
+          - is_not_negative_value             
+      - name: product_height_cm
+        tests:
+          - is_not_negative_value    
+      - name: product_width_cm
+        tests:
+          - is_not_negative_value              
+
+
+
+         

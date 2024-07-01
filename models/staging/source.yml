@@ -1,0 +1,12 @@
+version: 2
+sources:
+
+  - name: ecommerce
+    database: paddle-428012
+    schema: ecommerce
+    tables:
+      - name: customers
+      - name: orders
+      - name: order_items
+      - name: order_payments
+      - name: products
