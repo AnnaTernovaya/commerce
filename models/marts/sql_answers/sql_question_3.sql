@@ -7,9 +7,9 @@ WITH top_categories AS (
     SUM(oi.price) AS total_gmv,
     COUNT(oi.order_item_id) AS items_sold
   FROM {{ ref('stg_order_items') }} AS oi
-  JOIN {{ ref('stg_orders') }} AS o 
+  LEFT JOIN {{ ref('stg_orders') }} AS o 
   ON oi.order_id = o.order_id
-  JOIN {{ ref('stg_order_products') }} AS p 
+  LEFT JOIN {{ ref('stg_order_products') }} AS p 
   ON oi.product_id = p.product_id
   WHERE EXTRACT(YEAR FROM o.order_purchase_timestamp) = 2017
     AND EXTRACT(MONTH FROM o.order_purchase_timestamp) = 11
@@ -26,9 +26,9 @@ cte_weekly_GMV AS (
     EXTRACT(YEAR FROM o.order_purchase_timestamp) AS year,
     SUM(oi.price) AS weekly_gmv
   FROM {{ ref('stg_order_items') }} AS oi
-  JOIN {{ ref('stg_orders') }} AS o 
+  LEFT JOIN {{ ref('stg_orders') }} AS o 
   ON oi.order_id = o.order_id
-  JOIN {{ ref('stg_products') }} AS p
+  LEFT JOIN {{ ref('stg_products') }} AS p
   ON oi.product_id = p.product_id
   WHERE EXTRACT(YEAR FROM o.order_purchase_timestamp) = 2017
     AND p.product_category_name IN (SELECT product_category_name FROM top_categories)
