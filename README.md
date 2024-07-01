@@ -1,4 +1,6 @@
 1. Sql dialect is BigQuery
-2. 4 files with sql answers located in models/marts/sql_answers
-3. Tests are in the tests/ folder and models/staging/schema.yml
-4. The source models described in commerce/models/staging folder
+2. The source models described in models/staging folder
+3. Four sql answers located in models/marts/sql_answers
+4. Data quality tests located:
+    - path models/staging/schema.yml for standard tests
+    - path tests/generic for customized tests. 
