@@ -1,11 +1,11 @@
 -- Syntax used in the project - BigQuery
 
 
--- Data qality tests are presented in two folders:
+-- Data quality tests are presented in two folders:
 --    1. path models/staging/schema.yml - standard tests
---    2. path tests/generic - customized tests
+--    2. path tests - customized tests
 
--- Data qulity checks presented above are ensuring data accuracy,
+-- Data quality checks presented above ensuring data accuracy,
 -- including validation of data types, completeness, consistency, and adherence to business rules:
 
 --   Check for Null Values in Primary Key Columns - ensure primary keys are not nulls
