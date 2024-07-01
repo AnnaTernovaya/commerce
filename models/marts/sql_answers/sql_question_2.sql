@@ -9,7 +9,7 @@ WITH order_data AS (
     EXTRACT(WEEK FROM o.order_purchase_timestamp) AS week,
     EXTRACT(DAY FROM o.order_purchase_timestamp) AS day
   FROM {{ ref('stg_order_items') }} AS oi
-  JOIN {{ ref('stg_orders') }} AS o ON oi.order_id = o.order_id
+  LEFT JOIN {{ ref('stg_orders') }} AS o ON oi.order_id = o.order_id
   WHERE EXTRACT(YEAR FROM o.order_purchase_timestamp) = 2017
 ),
 
