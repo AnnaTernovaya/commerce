@@ -3,5 +3,5 @@
 3. The source models are described in models/staging
 4. Four sql answers are located as mart tables in models/marts/sql_answers
 5. Data quality tests located:
-    - models/staging/schema.yml for standard tests
+    - [models/staging/schema.yml](https://github.com/AnnaTernovaya/commerce/tree/main/tests) for standard tests
     - tests for customized tests. 
